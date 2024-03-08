@@ -22,6 +22,11 @@ io.on('connection', socket => {
     io.emit('chat message', msg)
   })
 
+  socket.onAny((eventName, ...args) => {
+    console.log(eventName) // 'hello'
+    console.log(args) // [ 1, '2', { 3: '4', 5: ArrayBuffer (1) [ 6 ] } ]
+  })
+
   socket.on('disconnect', () => {
     console.log('user disconnected')
   })
